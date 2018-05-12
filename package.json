@@ -1,0 +1,49 @@
+{
+  "name": "javascriptbase",
+  "version": "1.0.0",
+  "description": "A template for a proper javascript development enviroment",
+  "scripts": {
+    "start": "npm-run-all --parallel check-libraries lint:watch start-server test:watch",
+    "start-server": "babel-node app",
+    "lint": "esw webpack.config.* src",
+    "lint:watch": "npm run lint -- --watch",
+    "check-libraries": "nsp check",
+    "localtunnel": "lt --port 3000 --subdomain panos",
+    "share": "npm-run-all --parallel start-server localtunnel",
+    "test": "mocha --reporter progress ./test/testsConfig.js \"test/**/*.js\"",
+    "test:watch": "npm run test -- --watch",
+    "clean-dist": "rimraf ./dist && mkdir dist",
+    "prebuild": "npm-run-all clean-dist test lint",
+    "build":"babel-node build"
+  },
+  "author": "Panagiotis Rousis",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/VincentPanos/JavaScriptBase.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.4",
+    "babel-preset-env": "^1.6.1",
+    "babel-register": "^6.26.0",
+    "chai": "^4.1.2",
+    "chalk": "^2.3.2",
+    "css-loader": "^0.28.11",
+    "eslint": "^4.19.1",
+    "eslint-plugin-import": "^2.10.0",
+    "eslint-watch": "^3.1.4",
+    "express": "^4.16.3",
+    "mocha": "^5.0.5",
+    "npm-run-all": "^4.1.2",
+    "nsp": "^3.2.1",
+    "path": "^0.12.7",
+    "style-loader": "^0.21.0",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "webpack": "^4.8.2",
+    "webpack-cli": "^2.1.3",
+    "webpack-dev-middleware": "^3.1.3"
+  }
+}
