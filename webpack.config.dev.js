@@ -1,4 +1,5 @@
 import path from 'path';
+import webpack from 'webpack'
 
 export default  {
   devtool: 'inline-source-map',
@@ -27,5 +28,12 @@ export default  {
         }
       }
     ]
+  },
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
+  devServer: {
+    hot: true,
+    contentBase: './'
   }
 };

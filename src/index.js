@@ -1,1 +1,8 @@
-//console.log('This is the entry point hmm');
+import React from 'react';
+import ReactDom from 'react-dom';
+import App from './app';
+
+ReactDom.render(
+  <App/>,
+  document.getElementById('entry')
+);
